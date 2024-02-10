@@ -1,8 +1,10 @@
 pesel = input()
-temp = []
-pesel_a = []
 
-def konwersja(pesel, temp, pesel_a):
+#konwertuje string na array z liczbami
+def konwersja(pesel):
+    pesel_a = []
+    temp = []
+
     for ttt in pesel:
         temp.append(ttt)
 
@@ -10,11 +12,13 @@ def konwersja(pesel, temp, pesel_a):
         x = int(temp[i])
         pesel_a.append(x)
 
-    # print(pesel_a)
+    return pesel_a
 
-konwersja(pesel, temp, pesel_a)
+pesel_a = konwersja(pesel)
 
-def sprawdzanie(pesel, temp, pesel_a):
+
+
+def sprawdzanie(pesel_a):
     
     wagi = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
     iloczyn_liczb = []
@@ -28,6 +32,11 @@ def sprawdzanie(pesel, temp, pesel_a):
         suma = suma + cyfra
 
     kontrolna = 10 - (suma%10)
-    print(kontrolna)
+    return kontrolna
 
-sprawdzanie(pesel, temp, pesel_a)
+
+
+kontrolna = sprawdzanie(pesel_a)
+
+if pesel_a[10] == kontrolna:
+    print("Pesel jest poprawny")
